@@ -9,13 +9,12 @@ from src.utils import spark_utils
 import os 
 import pandas as pd
 
-
-
 def load_model_safe(model_name, version_id=None, alias=None):
     
     # set tracking uri
-    os.environ["DATABRICKS_HOST"] = config.databricks_host
-    os.environ["DATABRICKS_TOKEN"] = config.databricks_token
+    if not config.running_on_databricks:
+        os.environ["DATABRICKS_HOST"] = config.databricks_host
+        os.environ["DATABRICKS_TOKEN"] = config.databricks_token
     mlflow.set_tracking_uri("databricks")
     
     # 2. Initialize client
@@ -35,7 +34,6 @@ def load_model_safe(model_name, version_id=None, alias=None):
     except Exception as e:
         print(f"Failed to load model '{model_name}' at {model_uri}: {e}")
         return None
-
 
 def evaluate_model(model_name, evaluate_spark_df: DataFrame, version_id=None, alias=None) -> bool:
     model = load_model_safe(model_name, version_id, alias)

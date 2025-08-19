@@ -2,15 +2,16 @@
 import pandas as pd 
 from src.config import config 
 from src.utils import spark_utils
-import os 
+import os
+from pathlib import Path 
 
-data_dir = os.path.dirname(os.path.realpath("__file__"))
-print(data_dir)
 
 def upload_initial_data():
 
     # load data
-    df = pd.read_csv(data_dir + "/teen_phone_addiction_dataset.csv")
+    data_dir = Path.cwd()
+    print("data_dir:", data_dir)
+    df = pd.read_csv(data_dir / "src/data/teen_phone_addiction_dataset.csv")
     
     spark_df = spark_utils.spark.createDataFrame(df)
     # Save to Databricks

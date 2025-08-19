@@ -19,10 +19,10 @@ targets:
     mode: development
     default: true
     workspace:
-      host: https://dbc-dc1a5663-c463.cloud.databricks.com
+      host: https://dbc-cbfce1dc-6ab2.cloud.databricks.com
       root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.target}/${bundle.name}
 
   prd:
     workspace:
-      host: https://dbc-dc1a5663-c463.cloud.databricks.com
+      host: https://dbc-cbfce1dc-6ab2.cloud.databricks.com
       root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.target}/${bundle.name}

@@ -82,7 +82,25 @@ def apply_XGBBoosting_with_RandomizedSearchCV(df_train_X: pd.DataFrame, train_y:
 def split_choose_data(spark_df:DataFrame, seed=42):
     # 4. Preprocess first, then split
     # Here we split the original data into train/val/test AFTER preprocessing
-    train_df_spark, val_df_spark, test_df_spark = spark_df.randomSplit([0.7, 0.15, 0.15], seed=seed)
+    # Total row count
+    n = spark_df.count()
+
+    # Define split sizes
+    train_size = int(0.6 * n)
+    val_size   = int(0.2 * n)
+    test_size  = n - train_size - val_size  # remainder
+
+    # --- Step 1: Train Sample ---
+    train_df_spark = spark_df.sample(withReplacement=False, fraction=1.0, seed=seed).limit(train_size)
+
+    # --- Step 2: Validation Sample ---
+    remaining_df = spark_df.subtract(train_df_spark)
+    val_df_spark = remaining_df.sample(withReplacement=False, fraction=1.0, seed=seed).limit(val_size)
+
+    # --- Step 3: Test = Remaining ---
+    test_df_spark = remaining_df.subtract(val_df_spark)
+
+    # train_df_spark, val_df_spark, test_df_spark = spark_df.randomSplit([0.6, 0.2, 0.2], seed=seed)
     
     # convert it to Pandas dataframe for training and verification
     train_df = train_df_spark.select(feature_label.FEATURE_COLS + [feature_label.LABEL_COL]).toPandas()

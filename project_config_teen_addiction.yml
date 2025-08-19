@@ -1,0 +1,8 @@
+CATALOG_NAME: addiction_monitor_dev
+SCHEMA_NAME: addiction_schema
+TABLE_NAME: teen_phone_addiction
+MODEL_NAME: teen_phone_addiction
+ARTIFACT_NAME: teen_phone_addiction_predictor
+ENDPOINT_NAME: teen-phone-addiction
+EXPERIMENT_NAME: /Users/claudia.yao@hotmail.com/teen_phone_addiction_experiment
+ENV: development

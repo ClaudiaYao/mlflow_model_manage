@@ -50,7 +50,7 @@ def log_register_model(model, model_name, metrics: dict, parameters: dict, signa
     print("🔄 Registering the model in UC...")
     # Log and register new model
     
-    mlflow.set_experiment(f"/Users/claudia.yao2012@gmail.com/teen_phone_addiction_experiment")
+    mlflow.set_experiment(config.experiment_name)
     with mlflow.start_run() as run:
         run_id = run.info.run_id
         parameters['run_id'] = run_id

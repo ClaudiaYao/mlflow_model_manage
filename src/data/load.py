@@ -4,10 +4,6 @@ from pyspark.sql import SparkSession
 from src.config import config 
 from pyspark.sql import DataFrame
 
-
-data_dir = os.path.dirname(os.path.realpath("__file__"))
-print(data_dir)
-
 def load_data(spark: SparkSession):
     df = spark.table(f"{config.catalog_name}.{config.schema_name}.{config.table_name}")
     return df

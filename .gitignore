@@ -11,3 +11,4 @@ wheels/
 
 .databricks
 upload_secrets.py
+.DS_Store
