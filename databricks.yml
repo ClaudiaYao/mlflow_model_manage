@@ -1,0 +1,28 @@
+# This is a Databricks asset bundle definition for mlflow-model-manage.
+# The Databricks extension requires databricks.yml configuration file.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+
+bundle:
+  name: mlflow-model-manage
+
+include:
+  - resources/*
+
+artifacts:
+  default:
+    type: whl
+    build: uv build
+    path: .
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-dc1a5663-c463.cloud.databricks.com
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.target}/${bundle.name}
+
+  prd:
+    workspace:
+      host: https://dbc-dc1a5663-c463.cloud.databricks.com
+      root_path: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.target}/${bundle.name}

@@ -1,0 +1,23 @@
+[project]
+name = "mlflow-model-manage"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "databricks>=0.2",
+    "databricks-connect>=16.1.6",
+    "databricks-sdk>=0.63.0",
+    "dotenv>=0.9.9",
+    "matplotlib>=3.10.5",
+    "mlflow>=2.4.0",
+    "pandas>=2.3.1",
+    "pytest>=8.4.1",
+    "python-dotenv>=1.1.1",
+    "scikit-learn>=1.7.1",
+    "xgboost>=3.0.4",
+]
+
+
+[tool.setuptools.packages.find]
+where = ["."]

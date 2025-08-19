@@ -1,0 +1,23 @@
+resources:
+  jobs:
+    deployment:
+      name: ${bundle.name}-workflow
+      schedule:
+        quartz_cron_expression: "0 0 6 ? * MON"
+        timezone_id: "Europe/Amsterdam"
+        pause_status: UNPAUSED
+      tags:
+        project_name: "teen_phone_addiction"
+
+      environments:
+        - environment_key: default
+          spec:
+            client: "3"
+            dependencies:
+              - ../dist/*.whl
+
+      tasks:
+        - task_key: "train_model"
+          environment_key: default
+          spark_python_task:
+            python_file: "../scripts/train_pipeline.py"
