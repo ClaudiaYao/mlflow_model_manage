@@ -21,6 +21,5 @@ def get_spark_session():
     print("generate spark session")
     return spark
 
-
 spark = get_spark_session()
 
