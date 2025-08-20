@@ -6,13 +6,6 @@ if config.running_on_databricks:
     project_root = Path.cwd()
     os.chdir(project_root)
     print("project_root:", project_root)
-    
-# project_root = Path.cwd()
-# print("project_root:", project_root)# current working directory
-# # sys.path.insert(0, project_root)
-# # target_dir = Path.cwd().parent
-# os.chdir(project_root)
-# print("current dir:", target_dir)
 
 from src.data import load, preprocess
 from src.model import train, logging_register
