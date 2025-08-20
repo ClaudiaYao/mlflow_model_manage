@@ -1,6 +1,6 @@
 # Introduction
 
-The repo contains a sample MLFlow project. It uses DataBricks Free Edition, and some functionalities could not work correctly
+The repo contains a sample MLFlow project. It uses DataBricks Trial Version. If you use DataBricks Free Edition or DataBricks Community Edition, some functionalities could not work correctly.
 
 ## Implemented functionalities:
 
