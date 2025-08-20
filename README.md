@@ -29,7 +29,7 @@ brew install databricks
 
 4. Activate virtual environment by `source .venv/bin/activate`
 5. Run "uv sync"
-6. Create DataBricks profile, install Databricks extension and configure it as below (refer to this video on how to configure https://www.youtube.com/watch?v=nEue_1THOvk&t=685s)
+6. Create DataBricks profile, install Databricks extension and configure it as below (refer to this video on how to configure https://www.youtube.com/watch?v=o4qMWHgT1zM&t=735s)
 <br>
 
    <img src="notebook/databricks_connect.png" width =800>
